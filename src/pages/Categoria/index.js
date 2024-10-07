@@ -20,9 +20,9 @@ export default function Categoria() {
         imagem={categoria.header}
       />
       <div className={styles.itens}>
-        {itens?.map((item) => {
-          <div key={item.id}>lala{item.titulo}</div>;
-        })}
+        {itens?.map((item) => (
+          <div key={item.id}>{item.titulo}</div>
+        ))}
       </div>
     </div>
   );
