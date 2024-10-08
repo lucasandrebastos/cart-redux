@@ -1,4 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
+
 const initialState = [];
 
 const carrinhoSlice = createSlice({
@@ -9,7 +10,7 @@ const carrinhoSlice = createSlice({
       const temItem = state.some((item) => item.id === payload);
       if (!temItem)
         return [
-          { ...state },
+          ...state,
           {
             id: payload,
             quantidade: 1,
@@ -19,5 +20,7 @@ const carrinhoSlice = createSlice({
     },
   },
 });
+
 export const { mudarCarrinho } = carrinhoSlice.actions;
+
 export default carrinhoSlice.reducer;

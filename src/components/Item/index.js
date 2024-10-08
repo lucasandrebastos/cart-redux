@@ -13,13 +13,14 @@ const iconeProps = {
 export default function Item(props) {
   const { titulo, foto, preco, descricao, favorito, id } = props;
   const dispatch = useDispatch();
-  const temNoCarrinho = useSelector((state) =>
+  const estaNoCarrinho = useSelector((state) =>
     state.carrinho.some((itemNoCarrinho) => itemNoCarrinho.id === id)
   );
 
-  function toggleFavorite() {
+  function resolverFavorito() {
     dispatch(mudarFavorito(id));
   }
+
   function resolverCarrinho() {
     dispatch(mudarCarrinho(id));
   }
@@ -42,18 +43,18 @@ export default function Item(props) {
                 {...iconeProps}
                 color="#ff0000"
                 className={styles["item-acao"]}
-                onClick={toggleFavorite}
+                onClick={resolverFavorito}
               />
             ) : (
               <AiOutlineHeart
                 {...iconeProps}
                 className={styles["item-acao"]}
-                onClick={toggleFavorite}
+                onClick={resolverFavorito}
               />
             )}
             <FaCartPlus
               {...iconeProps}
-              color={temNoCarrinho ? "#1875E8" : iconeProps.color}
+              color={estaNoCarrinho ? "#1875E8" : iconeProps.color}
               className={styles["item-acao"]}
               onClick={resolverCarrinho}
             />
